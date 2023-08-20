@@ -1,3 +1,5 @@
+import './FilterModal.css'
+
 export default function FilterModal () {
     return(
         <section>

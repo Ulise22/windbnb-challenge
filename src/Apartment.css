@@ -1,0 +1,59 @@
+.apartment {
+    width: 395px;
+}
+
+.apartment__img {
+    width: 395px;
+    height: 269px;
+    object-fit: cover;
+    border-radius: 24px;
+}
+
+.apartment__content {
+    display: flex;
+    justify-content: space-between;
+}
+
+.apartment__content__details {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.apartment__superhost {
+    border: 1px solid #4F4F4F;
+    border-radius: 12px;
+    color: #4F4F4F;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 7px 10px;
+}
+
+.apartment__type {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 0;
+    display: flex;
+    align-items: center;
+    color: #828282;
+}
+
+.apartmen__content__rating {
+    display: flex;
+    align-items: center;
+}
+.apartmen__content__rating p {
+    color: #4F4F4F;
+    font-size: 14px;
+}
+
+.star {
+    color: #EB5757;
+}
+
+.apartment__title {
+    color: #333;
+    margin-top: 0;
+    font-size: 16px;
+    font-weight: 600;
+}

@@ -1,0 +1,37 @@
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 32px;
+    margin-bottom: 60px;
+}
+
+.navbar__logo {
+    height: 100%;
+}
+
+.navbar__btn__container {
+    display: flex;
+    height: 55px;
+    align-items: center;
+    padding: 0 16px;
+    gap: 16px;
+    box-shadow: 0px 1px 6px 0px #0000001A;
+    border-radius: 16px;
+    font-size: 14px;
+}
+
+.navbar__btn {
+    color: #BDBDBD;
+    cursor: pointer;
+}
+
+.navbar__btn__border {
+    width: 1px;
+    height: 55px;
+    background-color: #F2F2F2;
+}
+
+.search {
+    color: #EB5757;
+}

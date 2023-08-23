@@ -4,6 +4,7 @@ import data from './assets/stays.json'
 import { Household } from './types/types'
 import './App.css'
 import './Apartment.css'
+import Footer from './components/footer/Footer'
 
 export default function App () {
   const [staysQuantity, setStaysQuatitiy] = useState(6)
@@ -36,9 +37,7 @@ export default function App () {
         })}
       </section>
 
-      <footer>
-        <p>created by <a href='https://github.com/Ulise22'><b>Ulises</b></a> - devChallenge.io</p>
-      </footer>
+      <Footer />
     </main>
   )
 }

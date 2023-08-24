@@ -3,38 +3,24 @@ import Navbar from './components/navbar/Navbar'
 import data from './assets/stays.json'
 import { Household } from './types/types'
 import './App.css'
-import './Apartment.css'
 import Footer from './components/footer/Footer'
+import FilterModal from './components/filterModal/FilterModal'
+import Apartment from './components/apartment/Apartment'
 
 export default function App () {
   const [staysQuantity, setStaysQuatitiy] = useState(6)
+  const [isOpen, setIsOpen] = useState(true)
   return(
     <main className='main'>
       <Navbar />
+      <FilterModal isOpen={isOpen} />
       <header className='header'>
         <h1 className='title'>Stays in Finland</h1>
         <span onClick={() => setStaysQuatitiy(data.length)} className='staysquantity'>12+ stays</span>
       </header>
 
       <section className='apartment__container'>
-        { data.slice(0, staysQuantity).map((items: Household ) => {
-          return(
-            <article className='apartment' key={crypto.randomUUID()}>
-              <img className='apartment__img' src={items.photo} alt={items.title} />
-              <section className='apartment__content'>
-                  <div className='apartment__content__details'>
-                      {items.superHost && <span className='apartment__superhost'>SUPER HOST</span>}
-                      <p className='apartment__type'> {items.type} {items.beds && <p> . {items.beds} beds </p> } </p>
-                  </div>
-                  <div className='apartmen__content__rating'>
-                    <span className="material-icons star">star</span> 
-                    <p>{ items.rating }</p>
-                  </div>
-              </section>
-              <h4 className='apartment__title'> {items.title} </h4>
-            </article>
-            )
-        })}
+        { data.slice(0, staysQuantity).map((items: Household ) => <Apartment key={crypto.randomUUID()} item={items} />)}
       </section>
 
       <Footer />

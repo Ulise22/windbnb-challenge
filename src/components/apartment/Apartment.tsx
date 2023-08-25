@@ -1,6 +1,5 @@
 import { Household } from "../../types/types"
-import '../../Apartment.css'
-
+import './Apartment.css'
 
 export default function Apartment ({item}: {item: Household}) {
 console.log(item)

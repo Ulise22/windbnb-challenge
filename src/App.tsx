@@ -9,10 +9,10 @@ import Apartment from './components/apartment/Apartment'
 
 export default function App () {
   const [staysQuantity, setStaysQuatitiy] = useState(6)
-  const [isOpen, setIsOpen] = useState(true)
+  const [isOpen, setIsOpen] = useState('none')
   return(
     <main className='main'>
-      <Navbar />
+      <Navbar changeIsOpen={setIsOpen} />
       <FilterModal isOpen={isOpen} />
       <header className='header'>
         <h1 className='title'>Stays in Finland</h1>

@@ -1,10 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@400;700;800&display=swap');
+
 .modal {
     position: absolute;
+    font-family: 'Mulish', sans-serif;
     top: 0;
     left: 0;
     width: 100%;
     height: 120%;
-    background-color: #33333333;
+    background-color: #4F4F4F66;
 }
 
 .filtermodal {
@@ -14,11 +17,59 @@
 }
 
 .filtermodal__btns {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    place-items: center;
     border-radius: 16px;
     box-shadow: 0px 1px 6px 0px #0000001A;
     width: 90%;
     height: 55px;
     margin: auto;
+}
+
+.filtermodal__btn {
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+}
+
+.filtermodal__btn:hover {
+    background-color: #e6e6e61a;
+    border-radius: 16px;
+}
+
+.activeFilter {
+    border: 1px solid #000;
+    border-radius: 16px;
+    height: 100%;
+}
+
+.filtermodal__btn__b {
+    font-size: 9px;
+    margin-left: 20px;
+    font-weight: 800;
+}
+
+.filtermodal__btn__p {
+    margin-left: 20px;
+    font-size: 14px;
+    color: #BDBDBD;
+    line-height: 0;
+}
+
+.filtermodal__searchbtn {
+    cursor: pointer;
+    background-color: #EB5757;
+    border: none;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 16px;
+    height: 100%;
+    width: 126px;
+}
+
+.filtermodal__searchbtn:hover {
+    background-color: #EB5757E5;
 }

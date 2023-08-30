@@ -1,21 +1,46 @@
+import { isValidElement, useState } from 'react'
 import './FilterModal.css'
 
-export default function FilterModal ({isOpen}: {isOpen: string}) {
+export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests, location, changeLocation}: {isOpen: string, changeIsOpen: (isOpen: string) => void, guests: number, changeGuests: (guests: number) => void, location: string, changeLoaction: (location: string) => void,}) {
+    const [adults, setAdults] = useState(0);
+    const [children, setChildren] = useState(0);
     if(isOpen === 'none') return
+
+
+    const addGuests = (isAdult: boolean) => {
+        changeGuests(guests+1)
+        isAdult ? setAdults(adults+1) : setChildren(children+1)
+    }
+
+    const restGuest = (isAdult: boolean) => {
+        if(guests > 0) {
+            if(isAdult) {
+                if(adults > 0) {
+                    setAdults(adults-1)
+                    changeGuests(guests-1)
+                }
+            } else {
+                if(children > 0) {
+                    setChildren(children-1)
+                    changeGuests(guests-1)
+                }
+            }
+        }
+    }
 
     return(
         <div className='modal'>
             <section className='filtermodal'>
                 <article className='filtermodal__btns'>
-                    <div>
-                        <b>LOCATION</b>
-                        <p>Add location</p>
+                    <div onClick={() => changeIsOpen('Location')} className={isOpen === 'Location' ? 'activeFilter filtermodal__btn' : 'filtermodal__btn'}>
+                        <b className='filtermodal__btn__b'>LOCATION</b>
+                        <p className='filtermodal__btn__p'> {location === '' ? <>Add location</> : <b> {location}, Finland </b>} </p>
                     </div>
-                    <div>
-                        <b>GUEST</b>
-                        <p>Add guest</p>
+                    <div onClick={() => changeIsOpen('Guest')} className={isOpen === 'Guest' ? 'activeFilter filtermodal__btn' : 'filtermodal__btn'}>
+                        <b className='filtermodal__btn__b'>GUEST</b>
+                        <p className='filtermodal__btn__p'>{ guests === 0 ? <>Add guest</> : <b>{guests}</b>  }</p>
                     </div>
-                    <button>
+                    <button onClick={() => changeIsOpen('none')} className='filtermodal__searchbtn'>
                         <span className="material-icons">search</span>
                         Search
                     </button>
@@ -23,19 +48,19 @@ export default function FilterModal ({isOpen}: {isOpen: string}) {
 
                 {isOpen == 'Location' ?
                     <ul>
-                        <li>
+                        <li onClick={() => changeLocation('Heilsinki')}>
                             <span className="material-icons">location_on</span>
                             Heilsinki, Finland
                         </li>
-                        <li>
+                        <li onClick={() => changeLocation('Turku')}>
                             <span className="material-icons">location_on</span>
                             Turku, Finland
                         </li>
-                        <li>
+                        <li onClick={() => changeLocation('Oulu')}>
                             <span className="material-icons">location_on</span>
                             Oulu, Finland
                         </li>
-                        <li>
+                        <li onClick={() => changeLocation('Vaasa')}>
                             <span className="material-icons">location_on</span>
                             Vaasa, Finland
                         </li>
@@ -47,11 +72,11 @@ export default function FilterModal ({isOpen}: {isOpen: string}) {
                             <h5>Adults</h5>
                             <p>Ages 13 or above</p>
                             <div>
-                                <button>
+                                <button onClick={() => restGuest(true)}>
                                     <span className="material-icons">remove</span>
                                 </button>
-                                <h4>0</h4>
-                                <button>
+                                <h4> {adults} </h4>
+                                <button onClick={() => addGuests(true)}>
                                     <span className="material-icons">add</span>
                                 </button>
                             </div>
@@ -60,11 +85,11 @@ export default function FilterModal ({isOpen}: {isOpen: string}) {
                             <h5>Children</h5>
                             <p>Ages 2-12</p>
                             <div>
-                                <button>
+                                <button onClick={() => restGuest(false)}>
                                     <span className="material-icons">remove</span>
                                 </button>
-                                <h4>0</h4>
-                                <button>
+                                <h4> {children} </h4>
+                                <button onClick={() => addGuests(false)}>
                                     <span className="material-icons">add</span>
                                 </button>
                             </div>

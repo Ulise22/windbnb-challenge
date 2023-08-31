@@ -11,7 +11,8 @@
 }
 
 .filtermodal {
-    height: 50vh;
+    height: max-content;
+    padding: 40px 0;
     padding-top: 60px;
     background-color: #fff;
 }
@@ -57,6 +58,11 @@
     line-height: 0;
 }
 
+.filtermodal__btn__p b {
+    color: #333333;
+    font-weight: 400;
+}
+
 .filtermodal__searchbtn {
     cursor: pointer;
     background-color: #EB5757;
@@ -72,4 +78,88 @@
 
 .filtermodal__searchbtn:hover {
     background-color: #EB5757E5;
+}
+
+/* functionalities styles */
+
+.functionalities__container {
+    display: grid;
+    width: 90%;
+    margin: 0 auto;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.location__container {
+    grid-column-start: 1;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.location__item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #4F4F4F;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.location__item:hover {
+    color: #000;
+}
+
+.guest__container {
+    grid-column-start: 2;
+    margin-top: 50px;
+}
+
+.guest__title {
+    color: #333333;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 0;
+}
+
+.guest__desc {
+    color: #BDBDBD;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 0;
+}
+
+.guest__btncontainer {
+    display: flex;
+    gap: 20px;
+    height: 23px;
+    align-items: center;
+    margin-top: 24px;
+}
+
+.guest__btn {
+    background-color: #fff;
+    color: #828282;
+    border: 1px solid #828282;
+    border-radius: 4px;
+    display: flex;
+    width: 23px;
+    height: 23px;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.guest__btn span {
+    font-size: 16px;
+}
+
+.guest__quantity {
+    color: #333333;
+    font-size: 14px;
+}
+
+.hide {
+    display: none;
 }

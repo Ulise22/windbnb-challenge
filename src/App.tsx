@@ -14,7 +14,7 @@ export default function App () {
   const [isOpen, setIsOpen] = useState('none')
   return(
     <main className='main'>
-      <Navbar changeIsOpen={setIsOpen} />
+      <Navbar location={location} guests={guests} changeIsOpen={setIsOpen} />
       <FilterModal guests={guests} changeGuests={setGuests} location={location} changeLocation={setLocation} changeIsOpen={setIsOpen} isOpen={isOpen} />
       <header className='header'>
         <h1 className='title'>Stays in Finland</h1>

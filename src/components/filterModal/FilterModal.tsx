@@ -1,7 +1,7 @@
-import { isValidElement, useState } from 'react'
+import { useState } from 'react'
 import './FilterModal.css'
 
-export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests, location, changeLocation}: {isOpen: string, changeIsOpen: (isOpen: string) => void, guests: number, changeGuests: (guests: number) => void, location: string, changeLoaction: (location: string) => void,}) {
+export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests, location, changeLocation}: {isOpen: string, changeIsOpen: (isOpen: string) => void, guests: number, changeGuests: (guests: number) => void, location: string, changeLocation: (location: string) => void}) {
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     if(isOpen === 'none') return
@@ -46,55 +46,54 @@ export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests
                     </button>
                 </article>
 
-                {isOpen == 'Location' ?
-                    <ul>
-                        <li onClick={() => changeLocation('Heilsinki')}>
+                <article className='functionalities__container'>
+                    <ul className={isOpen == 'Location' ? 'location__container' : 'location__container hide'}>
+                        <li className='location__item' onClick={() => changeLocation('Heilsinki')}>
                             <span className="material-icons">location_on</span>
                             Heilsinki, Finland
                         </li>
-                        <li onClick={() => changeLocation('Turku')}>
+                        <li className='location__item' onClick={() => changeLocation('Turku')}>
                             <span className="material-icons">location_on</span>
                             Turku, Finland
                         </li>
-                        <li onClick={() => changeLocation('Oulu')}>
+                        <li className='location__item' onClick={() => changeLocation('Oulu')}>
                             <span className="material-icons">location_on</span>
                             Oulu, Finland
                         </li>
-                        <li onClick={() => changeLocation('Vaasa')}>
+                        <li className='location__item' onClick={() => changeLocation('Vaasa')}>
                             <span className="material-icons">location_on</span>
                             Vaasa, Finland
                         </li>
                     </ul>
-                
-                :
-                    <section>
-                        <article>
-                            <h5>Adults</h5>
-                            <p>Ages 13 or above</p>
-                            <div>
-                                <button onClick={() => restGuest(true)}>
+                    <section className={isOpen == 'Guest' ? 'guest__container' : 'guest__container hide'}>
+                        <article className='guest'>
+                            <h5 className='guest__title'>Adults</h5>
+                            <p className='guest__desc'>Ages 13 or above</p>
+                            <div className='guest__btncontainer'>
+                                <button className='guest__btn' onClick={() => restGuest(true)}>
                                     <span className="material-icons">remove</span>
                                 </button>
-                                <h4> {adults} </h4>
-                                <button onClick={() => addGuests(true)}>
+                                <h4 className='guest__quantity'> {adults} </h4>
+                                <button className='guest__btn' onClick={() => addGuests(true)}>
                                     <span className="material-icons">add</span>
                                 </button>
                             </div>
                         </article>
-                        <article>
-                            <h5>Children</h5>
-                            <p>Ages 2-12</p>
-                            <div>
-                                <button onClick={() => restGuest(false)}>
+                        <article className='guest'>
+                            <h5 className='guest__title'>Children</h5>
+                            <p className='guest__desc'>Ages 2-12</p>
+                            <div className='guest__btncontainer'>
+                                <button className='guest__btn' onClick={() => restGuest(false)}>
                                     <span className="material-icons">remove</span>
                                 </button>
-                                <h4> {children} </h4>
-                                <button onClick={() => addGuests(false)}>
+                                <h4 className='guest__quantity'> {children} </h4>
+                                <button className='guest__btn' onClick={() => addGuests(false)}>
                                     <span className="material-icons">add</span>
                                 </button>
                             </div>
                         </article>
-                    </section>}
+                    </section>
+                </article>
             </section>
         </div>
     )

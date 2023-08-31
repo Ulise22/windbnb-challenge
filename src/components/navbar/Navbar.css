@@ -26,6 +26,12 @@
     cursor: pointer;
 }
 
+.navbar__btn b {
+    color: #333;
+    font-size: 14px;
+    font-weight: 400;
+}
+
 .navbar__btn__border {
     width: 1px;
     height: 55px;

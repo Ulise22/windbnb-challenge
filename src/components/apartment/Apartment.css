@@ -1,9 +1,9 @@
 .apartment {
     width: 395px;
+    cursor: pointer;
 }
-
 .apartment__img {
-    width: 395px;
+    width: inherit;
     height: 269px;
     object-fit: cover;
     border-radius: 24px;

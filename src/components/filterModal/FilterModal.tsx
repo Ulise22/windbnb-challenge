@@ -48,7 +48,7 @@ export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests
 
                 <article className='functionalities__container'>
                     <ul className={isOpen == 'Location' ? 'location__container' : 'location__container hide'}>
-                        <li className='location__item' onClick={() => changeLocation('Heilsinki')}>
+                        <li className='location__item' onClick={() => changeLocation('Helsinki')}>
                             <span className="material-icons">location_on</span>
                             Heilsinki, Finland
                         </li>

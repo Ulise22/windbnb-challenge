@@ -9,21 +9,32 @@ import Apartment from './components/apartment/Apartment'
 
 export default function App () {
   const [staysQuantity, setStaysQuatitiy] = useState(6)
-  const [guests, setGuests] = useState(0)
+  const [stays, setStays] = useState (data)
+  const [maxGuests, setMaxGuests] = useState(0)
   const [location, setLocation] = useState('')
   const [isOpen, setIsOpen] = useState('none')
+
+  const changeStays = () => {
+    const xd = data
+    xd.filter(item => item.city === location)
+    setStays(xd)
+  }
+
+  console.log(stays)
   return(
     <main className='main'>
-      <Navbar location={location} guests={guests} changeIsOpen={setIsOpen} />
-      <FilterModal guests={guests} changeGuests={setGuests} location={location} changeLocation={setLocation} changeIsOpen={setIsOpen} isOpen={isOpen} />
+      <Navbar location={location} guests={maxGuests} changeIsOpen={setIsOpen} />
+      <FilterModal guests={maxGuests} changeGuests={setMaxGuests} location={location} changeLocation={setLocation} changeIsOpen={setIsOpen} isOpen={isOpen} />
       <header className='header'>
         <h1 className='title'>Stays in Finland</h1>
         <span onClick={() => setStaysQuatitiy(data.length)} className='staysquantity'>12+ stays</span>
       </header>
 
       <section className='apartment__container'>
-        { data.slice(0, staysQuantity).map((items: Household ) => <Apartment key={crypto.randomUUID()} item={items} />)}
+        { stays.slice(0, staysQuantity).map((items: Household ) => <Apartment key={crypto.randomUUID()} item={items} />)}
       </section>
+
+      <button onClick={changeStays}>xd</button>
 
       <Footer />
     </main>

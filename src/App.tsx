@@ -15,12 +15,12 @@ export default function App () {
   const [isOpen, setIsOpen] = useState('none')
 
   const changeStays = () => {
-    let xd = data
+    let auxArray = data
     if(location !== '') {
-      xd = data.filter(item => item.city === location)
+      auxArray = data.filter(x => x.city === location)
     }
-    xd = xd.filter(item => item.maxGuests >= maxGuests )
-    setStays(xd)
+    auxArray = auxArray.filter(x => x.maxGuests >= maxGuests )
+    setStays(auxArray)
   }
 
   return(

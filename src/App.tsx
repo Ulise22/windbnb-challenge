@@ -15,26 +15,26 @@ export default function App () {
   const [isOpen, setIsOpen] = useState('none')
 
   const changeStays = () => {
-    const xd = data
-    xd.filter(item => item.city === location)
+    let xd = data
+    if(location !== '') {
+      xd = data.filter(item => item.city === location)
+    }
+    xd = xd.filter(item => item.maxGuests >= maxGuests )
     setStays(xd)
   }
 
-  console.log(stays)
   return(
     <main className='main'>
       <Navbar location={location} guests={maxGuests} changeIsOpen={setIsOpen} />
-      <FilterModal guests={maxGuests} changeGuests={setMaxGuests} location={location} changeLocation={setLocation} changeIsOpen={setIsOpen} isOpen={isOpen} />
+      <FilterModal changeStays={changeStays} guests={maxGuests} changeGuests={setMaxGuests} location={location} changeLocation={setLocation} changeIsOpen={setIsOpen} isOpen={isOpen} />
       <header className='header'>
         <h1 className='title'>Stays in Finland</h1>
-        <span onClick={() => setStaysQuatitiy(data.length)} className='staysquantity'>12+ stays</span>
+        { stays.length > 6 && <span onClick={() => setStaysQuatitiy(data.length)} className='staysquantity'>12+ stays</span> }
       </header>
 
       <section className='apartment__container'>
         { stays.slice(0, staysQuantity).map((items: Household ) => <Apartment key={crypto.randomUUID()} item={items} />)}
       </section>
-
-      <button onClick={changeStays}>xd</button>
 
       <Footer />
     </main>

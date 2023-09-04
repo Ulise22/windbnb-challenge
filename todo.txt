@@ -1,2 +1,1 @@
-.Crear el sistema de filtrado de la app
 .Hacer la aplicación responsive

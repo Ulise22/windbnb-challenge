@@ -1,11 +1,18 @@
 import { useState } from 'react'
 import './FilterModal.css'
 
-export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests, location, changeLocation}: {isOpen: string, changeIsOpen: (isOpen: string) => void, guests: number, changeGuests: (guests: number) => void, location: string, changeLocation: (location: string) => void}) {
+export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests, location, changeLocation, changeStays}: {isOpen: string, changeIsOpen: (isOpen: string) => void, guests: number, changeGuests: (guests: number) => void, location: string, changeLocation: (location: string) => void, changeStays: () => void}) {
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);
     if(isOpen === 'none') return
 
+    const updateHome = () => {
+        if(location !== '') {
+            changeStays()
+        }
+
+        changeIsOpen('none')
+    }
 
     const addGuests = (isAdult: boolean) => {
         changeGuests(guests+1)
@@ -40,7 +47,7 @@ export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests
                         <b className='filtermodal__btn__b'>GUEST</b>
                         <p className='filtermodal__btn__p'>{ guests === 0 ? <>Add guest</> : <b>{guests}</b>  }</p>
                     </div>
-                    <button onClick={() => changeIsOpen('none')} className='filtermodal__searchbtn'>
+                    <button onClick={updateHome} className='filtermodal__searchbtn'>
                         <span className="material-icons">search</span>
                         Search
                     </button>
@@ -93,6 +100,10 @@ export default function FilterModal ({isOpen, changeIsOpen, guests, changeGuests
                             </div>
                         </article>
                     </section>
+                    <button onClick={updateHome} className='search__btn'>
+                        <span className="material-icons">search</span>
+                        Search
+                    </button>
                 </article>
             </section>
         </div>

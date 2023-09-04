@@ -2,7 +2,6 @@ import { Household } from "../../types/types"
 import './Apartment.css'
 
 export default function Apartment ({item}: {item: Household}) {
-console.log(item)
 
     return(
         <article className='apartment' key={crypto.randomUUID()}>

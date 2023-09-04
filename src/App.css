@@ -37,3 +37,24 @@ body {
   gap: 50px 20px;
   grid-template-columns: repeat(3, 1fr);
 }
+
+@media screen and (max-width: 1315px) {
+  .apartment__container {
+    grid-template-columns: repeat(2, 1fr);
+    justify-items: auto;
+  }
+}
+
+@media screen and (max-width: 895px) {
+  .main {
+    width: 95%;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .apartment__container {
+    grid-template-columns: 1fr;
+  }
+}
